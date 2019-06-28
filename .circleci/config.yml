@@ -18,6 +18,9 @@ jobs:
       - run:
           name: Run npm package test scripts
           command: npm run test
+      - run:
+          name: Run npm package build scripts
+          command: npm run build
       - persist_to_workspace:
           root: ./
           paths:

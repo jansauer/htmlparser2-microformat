@@ -1,4 +1,5 @@
 .vscode/
 coverage/
 node_modules/
-/test-report.html
+test-report.html
+index.js

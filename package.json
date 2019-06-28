@@ -1,14 +1,20 @@
 {
   "name": "htmlparser2-microformat",
   "version": "1.0.0",
-  "description": "",
+  "description": "JS Microformats Parser",
+  "homepage": "https://github.com/jansauer/htmlparser2-microformat",
+  "repository": {
+    "type": "git",
+    "url": "github:jansauer/htmlparser2-microformat.git"
+  },
+  "author": "Jan Sauer <jan@jansauer.de> (https://jansauer.de)",
+  "license": "UNLICENSED",
+  "private": true,
   "main": "index.js",
   "scripts": {
     "test": "(jest || true) && codecov",
-    "build": "webpack-cli --env.production",
-    "test-fast": "jest --noStackTrace --silent"
+    "build": "rollup -c"
   },
-  "author": "",
   "dependencies": {
     "entities": "^1.1.2",
     "htmlparser2": "3.10.1"
