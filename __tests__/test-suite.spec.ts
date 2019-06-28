@@ -9,14 +9,14 @@ const groups = readdirSync(v2, {withFileTypes: true})
   .map(dirent => dirent.name);
 
 const options = {
-  baseUrl: "http://microformats.org",
+  baseUrl: "https://example.com",
 };
 
 groups.forEach(group => {
   const directory = join(v2, group);
   const files = readdirSync(directory);
 
-  describe(`${group}`, async () => {
+  // describe(`${group}`, async () => {
 
     files.forEach(file => {
       if (extname(file) === '.json') {
@@ -25,7 +25,7 @@ groups.forEach(group => {
         const htmlFragment: string = readFileSync(join(v2, group, file.replace('.json', '.html')), "utf8");
         const jsonSnapshot: string = JSON.parse(readFileSync(join(v2, group, file), "utf8"));
   
-        test(`${name.replace('.json', '')}`, async () => {
+        test(`${group} ${name.replace('.json', '')}`, async () => {
           const result = await parse(htmlFragment, options.baseUrl);
           expect(result).toMatchObject(jsonSnapshot);
         });
@@ -33,6 +33,6 @@ groups.forEach(group => {
       }
     });
   
-  });
+  // });
 
 });

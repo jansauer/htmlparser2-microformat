@@ -16,14 +16,23 @@ export const extractText = (element: DomElement): string => {
   return text;
 };
 
-export const extractImage = (element: DomElement): {value: string, alt: string} | string => {
+export const extractImage = (baseUrl: string, element: DomElement): {value: string, alt: string} | string => {
+  const src: string = absolute(baseUrl, element.attribs.src);
   if ('alt' in element.attribs) {
     return {
       alt: element.attribs.alt,
-      value: element.attribs.src
+      value: src
     };
   }
-  return element.attribs.src;
+  return src;
+};
+
+export const absolute = (baseUrl: string, url: string): string => {
+
+  // do nothing if already absolute
+  if (/^[a-z][a-z\d+.-]*:/.test(url)) return url;
+
+  return resolve(baseUrl, url as string);
 };
 
 export const resolveUrl = (baseUrl: string, url: string | { value: string, alt }): string | { value: string, alt } => {

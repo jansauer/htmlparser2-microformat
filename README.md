@@ -7,7 +7,7 @@
 https://www.npmjs.com/package/node-html-parser
 https://github.com/cheeriojs/cheerio
 https://github.com/marko-js/htmljs-parser
-
+https://www.npmjs.com/package/sloc
 
 ## Todo
 
@@ -19,6 +19,7 @@ https://github.com/marko-js/htmljs-parser
    empty (`items`, `rels`, `rel-urls`, `properties`).
 * Test ideas
 ** sorting of types array
+* https://github.com/sindresorhus/is-absolute-url/blob/master/test.js
 
 ## Contributing
 

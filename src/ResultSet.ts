@@ -116,7 +116,8 @@ export const findMicroformatTypes = (element: DomElement): string[] => {
   if (element.attribs['class']) {
     return element.attribs['class']
       .split(' ')
-      .filter(substring => microformatRegex.test(substring));
+      .filter(substring => microformatRegex.test(substring))
+      .sort();
   }
   return [];
 

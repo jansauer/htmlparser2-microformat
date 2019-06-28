@@ -1,8 +1,9 @@
 import {Microformat} from "./types";
 import {DomElement} from "domhandler";
-import {extractImage, resolveUrl, extractText} from "./helper";
+import {extractImage, resolveUrl, extractText, absolute} from "./helper";
 import {findMicroformatTypes} from "./ResultSet";
 import {getByValuePattern} from "./util/value";
+import { decodeHTML } from "entities";
 
 /**
  * TODO
@@ -79,10 +80,6 @@ export class ParsedMicroformat implements Microformat {
           if (types.length > 0) {
             const microformat = new ParsedMicroformat(types, element, this.baseUrl);
 
-            console.log('HITT');
-            console.log(match.groups.type);
-
-
             if (match.groups.type === 'p') microformat.value = microformat.properties['name'][0];
             this.pushProperty(propertyName, microformat);
 
@@ -120,7 +117,7 @@ export class ParsedMicroformat implements Microformat {
 
           if (!!child.attribs.class) {
             if (child.attribs.class.split(' ').includes('value')) {
-              value += extractText(child).trim();
+              value += decodeHTML(extractText(child).trim());
             } else if (child.attribs.class.split(' ').includes('value-title')) {
               // the value-title feature is under consideration for deprecation
               value += child.attribs['title'];
@@ -135,7 +132,7 @@ export class ParsedMicroformat implements Microformat {
     } else if(['img', 'area'].includes(element.name) && 'alt' in element.attribs) {
       value = element.attribs.alt;
     } else if(value == '') {
-      value = extractText(element).trim();
+      value = decodeHTML(extractText(element).trim());
     }
 
     this.pushProperty(propertyName, value);
@@ -148,22 +145,24 @@ export class ParsedMicroformat implements Microformat {
     let value: string | {value, alt} = null;
 
     if ('href' in element.attribs) {
-      value = element.attribs.href;
+      value = absolute(this.baseUrl, element.attribs.href);
     } else if ('img' == element.name && 'src' in element.attribs) {
+
 
       if ('alt' in element.attribs) {
         value = {
-          value: element.attribs.src,
+          value: absolute(this.baseUrl, element.attribs.src),
           alt: element.attribs.alt
         }
       } else {
-        value = element.attribs.src;
+        value = absolute(this.baseUrl, element.attribs.src);
       }
 
+
     } else if(['video'].includes(element.name) && 'poster' in element.attribs) {
-      value = element.attribs.poster;
+      value = absolute(this.baseUrl, element.attribs.poster);
     } else if(['object'].includes(element.name) && 'data' in element.attribs) {
-      value = element.attribs.data;
+      value = absolute(this.baseUrl, element.attribs.data);
     } else {
       element.children.forEach(child => {
         // ignore tags that don't end up in the DOM
@@ -185,10 +184,9 @@ export class ParsedMicroformat implements Microformat {
     } else if(['data', 'input'].includes(element.name) && 'value' in element.attribs) {
       value = element.attribs.value;
     } else if(value == null) {
-      value = extractText(element).trim();
+      value = absolute(this.baseUrl, extractText(element).trim());
     }
 
-    value = resolveUrl(this.baseUrl, value);
     this.pushProperty(propertyName, value);
   }
 
@@ -199,7 +197,6 @@ export class ParsedMicroformat implements Microformat {
     let value: string = null;
 
     value = getByValuePattern(element, true);
-    console.log('# End');
 
     if(['time', 'ins', 'del'].includes(element.name) && 'datetime' in element.attribs) {
       value = element.attribs.datetime;
@@ -221,7 +218,7 @@ export class ParsedMicroformat implements Microformat {
    */
   searchForEValue(propertyName: string, element: DomElement) {
     this.pushProperty(propertyName, {
-      value: extractText(element).trim(),
+      value: decodeHTML(extractText(element).trim()),
       html: extractHtml(element)
     });
   }
@@ -272,7 +269,8 @@ export class ParsedMicroformat implements Microformat {
     let value: string | { value, alt } = null;
 
     if ('img' === element.name && 'src' in element.attribs) {
-      value = extractImage(element);
+      console.log('=> HIT');
+      value = extractImage(this.baseUrl, element);
     } else if ('object' === element.name && 'data' in element.attribs) {
       value = element.attribs.data;
     }
