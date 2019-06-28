@@ -1,0 +1,32 @@
+version: 2
+jobs:
+  build:
+    docker:
+      - image: circleci/node:12.4.0
+    environment:
+      GRADLE_OPTS: -Dorg.gradle.daemon=false
+    steps:
+      - checkout
+      - restore_cache:
+          key: node
+      - run:
+          name: Compare local node version to the nvm configuration
+          command: grep -q $(node -v | cut -c2-) .nvmrc
+      - run:
+          name: Install npm package dependencies
+          command: npm ci
+      - run:
+          name: Run npm package test scripts
+          command: npm run test
+      - persist_to_workspace:
+          root: ./
+          paths:
+            - package*.json
+            - dist
+      - store_artifacts:
+          path: dist
+          destination: ./
+      - save_cache:
+          key: node
+          paths:
+            - /root/.npm

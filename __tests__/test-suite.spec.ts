@@ -3,7 +3,7 @@ import { readdirSync, readFileSync, writeFileSync } from "fs";
 import {parse, } from "../src/index";
 
 // for now only microformats version 2 is suppported 
-const v2 = join(__dirname, '../tests/tests/microformats-v2');
+const v2 = join(__dirname, '../test-suite/tests/microformats-v2');
 const groups = readdirSync(v2, {withFileTypes: true})
   .filter(dirent => dirent.isDirectory())
   .map(dirent => dirent.name);

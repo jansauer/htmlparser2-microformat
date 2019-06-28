@@ -8,7 +8,7 @@ const options = {
 
 test('debug', async () => {
   // insert test file here:
-  const file: string = join(__dirname, '../tests/tests/microformats-v2/h-event/time');
+  const file: string = join(__dirname, '../test-suite/tests/microformats-v2/h-event/time');
 
   const htmlFragment: string = readFileSync(file + '.html', 'utf8');
   const jsonSnapshot: string = JSON.parse(readFileSync(file + '.json', 'utf8'));
