@@ -1,0 +1,6 @@
+[submodule "tests"]
+	path = tests
+	url = git@github.com:jansauer/microformats-tests.git
+[submodule "test-suite"]
+	path = test-suite
+	url = https://github.com/jansauer/microformats-tests

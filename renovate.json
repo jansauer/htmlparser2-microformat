@@ -1,0 +1,13 @@
+{
+  "labels": ["renovate"],
+  "rangeStrategy": "pin",
+  "automerge": true,
+  "packageRules": [
+    {
+      "groupName": "Microformats Tests",
+      "packageNames": ["microformat-tests"],
+      "automerge": false
+
+    }  
+  ]
+}
