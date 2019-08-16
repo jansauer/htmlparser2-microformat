@@ -25,7 +25,7 @@
     "@types/htmlparser2": "3.10.1",
     "@types/jest": "24.0.17",
     "codecov": "3.5.0",
-    "jest": "24.8.0",
+    "jest": "24.9.0",
     "jest-html-reporter": "2.5.0",
     "jest-html-reporters": "1.1.8",
     "prettier": "1.18.2",
