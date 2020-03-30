@@ -34,7 +34,7 @@
     "rollup-plugin-node-resolve": "5.2.0",
     "rollup-plugin-typescript": "1.0.1",
     "rollup-plugin-uglify": "6.0.4",
-    "ts-jest": "25.2.1",
+    "ts-jest": "25.3.0",
     "ts-loader": "6.2.2",
     "tslib": "1.11.1",
     "typescript": "3.8.3"
