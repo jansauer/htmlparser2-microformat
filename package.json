@@ -24,7 +24,7 @@
     "@types/entities": "1.1.1",
     "@types/htmlparser2": "3.10.1",
     "@types/jest": "25.2.2",
-    "codecov": "3.6.5",
+    "codecov": "3.7.0",
     "jest": "26.0.1",
     "jest-html-reporter": "3.1.0",
     "jest-html-reporters": "1.2.1",
