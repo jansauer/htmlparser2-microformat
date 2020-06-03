@@ -16,7 +16,7 @@
     "build": "rollup -c"
   },
   "dependencies": {
-    "entities": "2.0.2",
+    "entities": "2.0.3",
     "htmlparser2": "4.1.0"
   },
   "devDependencies": {
