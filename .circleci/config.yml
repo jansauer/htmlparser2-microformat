@@ -2,7 +2,7 @@ version: 2
 jobs:
   build:
     docker:
-      - image: circleci/node:12.12.0
+      - image: circleci/node:15.14.0
     environment:
       GRADLE_OPTS: -Dorg.gradle.daemon=false
     steps:
