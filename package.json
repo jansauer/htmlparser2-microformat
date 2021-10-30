@@ -20,7 +20,7 @@
     "htmlparser2": "7.1.2"
   },
   "devDependencies": {
-    "@babel/preset-typescript": "7.15.0",
+    "@babel/preset-typescript": "7.16.0",
     "@types/entities": "1.1.1",
     "@types/htmlparser2": "3.10.3",
     "@types/jest": "27.0.2",
