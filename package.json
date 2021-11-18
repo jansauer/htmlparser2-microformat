@@ -23,7 +23,7 @@
     "@babel/preset-typescript": "7.16.0",
     "@types/entities": "1.1.1",
     "@types/htmlparser2": "3.10.3",
-    "@types/jest": "27.0.2",
+    "@types/jest": "27.0.3",
     "codecov": "3.8.3",
     "jest": "27.3.1",
     "jest-html-reporter": "3.4.1",
