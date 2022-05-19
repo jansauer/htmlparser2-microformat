@@ -27,7 +27,7 @@
     "codecov": "3.8.3",
     "jest": "28.1.0",
     "jest-html-reporter": "3.5.0",
-    "jest-html-reporters": "3.0.6",
+    "jest-html-reporters": "3.0.7",
     "prettier": "2.6.2",
     "rollup": "2.74.0",
     "rollup-plugin-babel": "4.4.0",
