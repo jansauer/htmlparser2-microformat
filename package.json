@@ -28,7 +28,7 @@
     "jest": "28.1.1",
     "jest-html-reporter": "3.5.0",
     "jest-html-reporters": "3.0.9",
-    "prettier": "2.7.0",
+    "prettier": "2.7.1",
     "rollup": "2.75.6",
     "rollup-plugin-babel": "4.4.0",
     "rollup-plugin-node-resolve": "5.2.0",
