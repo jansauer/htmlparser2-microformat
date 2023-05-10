@@ -17,7 +17,7 @@
   },
   "dependencies": {
     "entities": "4.5.0",
-    "htmlparser2": "8.0.2"
+    "htmlparser2": "9.0.0"
   },
   "devDependencies": {
     "@babel/preset-typescript": "7.21.5",
