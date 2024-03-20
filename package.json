@@ -21,7 +21,7 @@
   },
   "devDependencies": {
     "@babel/preset-typescript": "7.24.1",
-    "@types/entities": "1.1.1",
+    "@types/entities": "2.0.0",
     "@types/htmlparser2": "3.10.7",
     "@types/jest": "29.5.12",
     "codecov": "3.8.3",
